@@ -1,42 +1,37 @@
-# Docker-CESM2-2-Demo
+# How to run CESM-2.2 inside a Docker container on the Google Cloud Shell
 
 
-This presentation was prepared for a demonstration (done online at a *NorESM kafe* on 2020-02-02) of the use
+This presentation was prepared for a demonstration (done on 2020-02-02) of the use
 of Docker containers with NCAR's ESCOMP/CESM2.2 image [on the Google Cloud Shell](https://shell.cloud.google.com):
 
 ![alt text](img/Cloud_Shell_Editor.png "Cloud Shell")
 
-Docker is already available and we only have to pull the image from DockerHub:
-
+Docker is already available, therefore we can directly pull the latest ESCOMP/CESM-2.2 image from DockerHub:
 ```
 docker pull escomp/cesm-2.2:latest
 ```
 ![alt text](img/Pulling_from_escomp.png "Pulling the image")
 
-and if everything went well this is what you should get
-
+and if everything went well this is what you should get:
 
 ![alt text](img/Docker_image_downloaded.png "Download finished")
 
 We can now start the container in detached mode:
-
 ```
 docker run -td escomp/cesm-2.2:latest
 ```
-To for example check the version of the operating system inside the container (Centos-8 in this case).
 ![alt text](img/Docker_run.png "Docker run")
 
-and start an interactive processe like a bash shell 
-(Notice that *-t* allocate a pseudo-tty and *-i* keeps STDIN open even if not attached) 
-
+To start an interactive processe like a bash shell we use *docker exec ... bash*
+(Notice that *-t* is to allocate a pseudo-tty and *-i* to keep STDIN open even if not attached) 
 ```
 docker exec -it 192 bash
 ```
 ![alt text](img/Docker_exec.png "Docker exec")
-The promp has now changed to **[user@cesm2.2 ~]$** to show that we are in the container.
+The promp has now changed to **[user@cesm2.2 ~]$** to confirm that we are in the container.
 
-To for example check the version of the operating system inside the container (Centos-8 in this case).
-
+We can now, for example, check the version of the operating system inside the container (Centos-8 in this case, 
+whereas the shell was originally Debian):
 ```
 cat /etc/os-release
 ```
@@ -57,13 +52,15 @@ create_newcase --case fkessler --compset FKESSLER --res T31_g37 --run-unsupporte
 ```
 ![alt text](img/Create_newcase.png "Create new case")
 
-Since there are only 2 processors on this machine the number of tasks has to be decreased (the default is 256), and we will run the simulation for 1 day only (instead of 5 days). To do so we go in the case directory and use the *./xmlchange* script:
+Since there are only 2 processors on this machine the number of tasks has to be decreased (the default is 256), and we will run the simulation for 1 day only (instead of 5 days). 
+
+To do so we go in the case directory and use the *./xmlchange* script:
 ```
 cd /home/user/fkessler
 ./xmlchange NTASKS=2
 ./xmlchange STOP_N=1
 ```
-Then we set-up, build and submit the case:
+Then set-up, build and submit the case:
 ```
 ./case.setup
 ```
