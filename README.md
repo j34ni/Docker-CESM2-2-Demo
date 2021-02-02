@@ -82,3 +82,5 @@ The missing data is downloaded first, the run begins, finishes after a minute or
 
 The timing information shows that the model throughput was 8.14 simulated_years/day.
 ![alt text](img/Timing.png "Timing")
+
+[![DOI](https://zenodo.org/badge/335239161.svg)](https://zenodo.org/badge/latestdoi/335239161)
