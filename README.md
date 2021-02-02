@@ -4,7 +4,7 @@
 This presentation was prepared for a demonstration (done online at a *NorESM kafe* on 2020-02-02) of the use
 of Docker containers with NCAR's ESCOMP/CESM2.2 image [on the Google Cloud Shell](https://shell.cloud.google.com):
 
-![alt text](https://github.com/j34ni/Docker-CESM2-2-Demo/blob/main/img/Cloud_Shell_Editor.png "Cloud Shell")
+![alt text](img/Cloud_Shell_Editor.png "Cloud Shell")
 
 Docker is already available and we only have to pull the image from DockerHub:
 
