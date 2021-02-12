@@ -25,7 +25,7 @@ Take note of the UUID long identifier which starts with *192df0aa73*: this strin
 the Docker daemon.
 
 
-To start an interactive processe like a bash shell we use *docker exec ... bash* with the first letters of the UUID
+To start an interactive process like a bash shell we use *docker exec ... bash* with the first letters of the UUID
 (here *-t* is to allocate a pseudo-tty and *-i* to keep STDIN open even if not attached):
 ```
 docker exec -it 192 bash
